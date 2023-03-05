@@ -28,13 +28,4 @@ public class Redirect {
         this.alias = alias;
         this.url = url;
     }
-
-    @Override
-    public String toString() {
-        return "Redirect{" +
-                "id=" + id +
-                ", alias='" + alias + '\'' +
-                ", url='" + url + '\'' +
-                '}';
-    }
 }

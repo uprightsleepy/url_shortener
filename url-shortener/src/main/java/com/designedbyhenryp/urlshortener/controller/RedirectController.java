@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import static com.designedbyhenryp.urlshortener.constants.UrlShortenerConstants.CREATE_REDIRECT;
+import static com.designedbyhenryp.urlshortener.constants.UrlShortenerConstants.HANDLE_REDIRECT;
 import static org.springframework.http.HttpStatus.MOVED_PERMANENTLY;
 
 
@@ -25,7 +27,7 @@ public class RedirectController {
         this.redirectService = redirectService;
     }
 
-    @GetMapping("/{alias}")
+    @GetMapping(HANDLE_REDIRECT)
     public ResponseEntity<?> handleRedirect(@PathVariable String alias) throws URISyntaxException {
         Redirect redirect = redirectService.getRedirect(alias);
         System.out.println("We're redirecting here!" + redirect);
@@ -35,7 +37,7 @@ public class RedirectController {
         return new ResponseEntity<>(httpHeaders, MOVED_PERMANENTLY);
     }
 
-    @PostMapping("/")
+    @PostMapping(CREATE_REDIRECT)
     public ResponseEntity<?> createRedirect(@Valid @RequestBody RedirectRequest redirectRequest) {
         return ResponseEntity.ok(redirectService.createRedirect(redirectRequest));
     }

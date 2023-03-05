@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import static com.designedbyhenryp.urlshortener.constants.UrlShortenerConstants.WEBSITE_VALIDATION;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -16,6 +18,6 @@ public class RedirectRequest {
     private String alias;
 
     @NotBlank(message = "URL must be provided.")
-    @Pattern(regexp = "(https?://(www\\.)?[-a-zA-Z\\d@:%._+~#=]{1,256}\\.[a-zA-Z\\d()]{1,6}\\b([-a-zA-Z\\d()@:%_+.~#?&/=]*))", message = "URL must be valid.")
+    @Pattern(regexp = WEBSITE_VALIDATION, message = "URL must be valid.")
     private String url;
 }
